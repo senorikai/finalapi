@@ -8,7 +8,7 @@ router.post('/login', async (req,res)=>{
         let result = await userModel.login({email,username,password} = req.body)
         // console.log('reareare',result);
         if(result.length>0){
-                res.json({Type:'Success',Message:'Successfully Loggedin'});
+                res.json({Type:'Success',Message:'Successfully Loggedin',Payload:result});
         }else{
                 res.json({Type:'Error',Message:'Credentials not found!'});
         }
