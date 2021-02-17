@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const userModel = require('../model')
+// const {view} = require('../model/Todo');
+
+const {view} = require('../model/Todo'); 
 
 
 router.post('/login', async (req,res)=>{
@@ -23,10 +26,7 @@ router.post('/login', async (req,res)=>{
 router.post('/register', async (req,res) => {
 
     try {
-
-        let result =  await userModel.register({email,username} = req.body)
-
-        console.log(result)
+        const { connection, getUsers, addUser, deleteUser, authUser, editUser, logout, getolusers, sendMessage, getMessages, deleteMessage} = require('./db/Utils'); // My utility file of accessing data from db, using destructuring
 
         if(result.length>0){
 
@@ -41,10 +41,16 @@ router.post('/register', async (req,res) => {
         
     } catch (error) {
         res.json({Type:'Error',Message:"Internal Server Error"});
-    }
-    
-            
+    }        
              
+})
+
+router.post('/viewTodo',  async (req,res) => {
+    // console.table(req.body)
+    const suway = await view();
+    console.table(suway)
+
+    res.send(suway);
 })
 
 module.exports = router;

@@ -8,5 +8,14 @@ module.exports = {
                 userId:data.userId}).run()
 
         return result
-    }
+        
+    },
+
+    view:async() => {
+        let result =  r.table('users').coerceTo('array').run()
+//   console.log("dfssdfd", result)
+
+          return result;
+          
+      }
 }
