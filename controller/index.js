@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const userModel = require('../model')
-// const {view} = require('../model/Todo');
 
 const {view} = require('../model/Todo'); 
 
@@ -45,6 +44,7 @@ router.post('/register', async (req,res) => {
              
 })
 
+
 router.post('/viewTodo',  async (req,res) => {
     // console.table(req.body)
     const suway = await view();
@@ -52,5 +52,7 @@ router.post('/viewTodo',  async (req,res) => {
 
     res.send(suway);
 })
+
+
 
 module.exports = router;

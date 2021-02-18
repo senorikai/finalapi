@@ -3,19 +3,25 @@ const r = require('../config')
 module.exports = {
    
     insert:async(data) => {
+        console.log(data)
       let result =  await r.table('ToDoList').insert({
-                todo_name:data.todo_name,
+                todoname:data.todoname,
                 userId:data.userId}).run()
 
         return result
         
     },
 
-    view:async() => {
-        let result =  r.table('users').coerceTo('array').run()
-//   console.log("dfssdfd", result)
+    getAll: () => {
+        // return r.table('ToDoList').orderby('todoname').run()
+        return r.table('ToDoList').run()
+    },
 
-          return result;
-          
-      }
+    delete: (id) => {
+          return r.table('ToDoList').get(id).delete().run()
+      },
+    
+     update: (id) => {
+        return r.table('ToDoList').get(id).delete().run()
+     }
 }

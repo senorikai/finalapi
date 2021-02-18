@@ -28,5 +28,6 @@ module.exports = {
                 password:data.password}).run()
 
         return result
-    }
+    },
+
 }
