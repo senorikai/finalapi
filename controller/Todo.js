@@ -12,9 +12,9 @@ router.post('/insert', async (req,res) => {
             }
 })
 
-router.get('/getUser', async (req,res) => {
-    const datas = await userModel.getAll();
-   
+router.get('/users/:userId/todos', async (req,res) => {
+    const datas = await userModel.getAll(req.params.userId);
+   console.log("data",datas);
     res.send(datas);
 })
 
@@ -27,10 +27,22 @@ router.post('/deleteTask/:taskId', async (req,res) => {
     catch (error) {
 
     }
+
+})
+
+router.post('/TodoUpdate', async(req,res) => {
+    try {
+        const {id,todoname} = req.body
+        const data = await userModel.update(id,todoname);
+        res.send(data);
+    }
+    catch (error) {
+
+    }
+   
 })
 
 // router.post()
-
 
 
 module.exports = router;
