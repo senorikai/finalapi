@@ -30,7 +30,9 @@ router.post('/deleteTask/:taskId', async (req,res) => {
 router.post('/TodoUpdate', async(req,res) => {
     try {
         const {id,todoname} = req.body
+        console.log("aspergladys",todoname);
         const data = await userModel.update(id,todoname);
+        // console.log("data",data);
         res.send(data);
     }
     catch (error) {
