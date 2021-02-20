@@ -2,7 +2,6 @@ const router = require('express').Router();
 const userModel = require('../model/Todo')
 
 router.post('/insert', async (req,res) => {
-    // console.log(req.body);
     try {
             let result = await userModel.insert({todoname,userId} = req.body)
             if(result) res.json({Type:'Success',Payload:result})
@@ -14,7 +13,7 @@ router.post('/insert', async (req,res) => {
 
 router.get('/users/:userId/todos', async (req,res) => {
     const datas = await userModel.getAll(req.params.userId);
-   console.log("data",datas);
+    console.log("data",datas);
     res.send(datas);
 })
 
@@ -25,9 +24,7 @@ router.post('/deleteTask/:taskId', async (req,res) => {
         return res.send(result)
     }
     catch (error) {
-
     }
-
 })
 
 router.post('/TodoUpdate', async(req,res) => {
@@ -37,12 +34,8 @@ router.post('/TodoUpdate', async(req,res) => {
         res.send(data);
     }
     catch (error) {
-
     }
-   
 })
-
-// router.post()
 
 
 module.exports = router;
