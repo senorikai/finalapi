@@ -22,6 +22,7 @@ router.post('/register', async (req,res) => {
         console.log("pup",result1)
         if(result1.length==0){
             let result = await userModel.insert({username,password} = req.body)
+            console.log("ahjsjhjagdhagjdgh",result)
             if(result) res.json({Type:'Success',Payload:result})
         }else{
             res.json({Type:'Error',Message:'Username already exists'});
@@ -30,7 +31,8 @@ router.post('/register', async (req,res) => {
     } catch (error) {
         console.log(error);
         res.json({Type:'Error',Message:"Internal Server Error"});
-    }                 
+    }        
+             
 })
 
 
