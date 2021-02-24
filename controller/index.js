@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
         const { email, username, password } = req.body
         const result1 = await userModel.checkuser_exist(email, username)
         if (result1.length == 0) {
-            let result = await userModel.insert({ email, username, password })
+            const result = await userModel.insert({ email, username, password })
             if (result) res.json({ Type: 'Success', Payload: result })
         } else {
             res.json({ Type: 'Error', Message: 'Username already exists' });
